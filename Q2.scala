@@ -1,25 +1,16 @@
-package Labsheet10
-
-import scala.io.StdIn
+package labsheet_10
 
 object Q2 {
-  def main(args: Array[String]): Unit ={
-    print("Enter the list of words ")
-    val InputString = StdIn.readLine()
-    val InputList = InputString.split(",").map(_.trim.toString).toList
-
-    val wordLength = numberOfLetters(InputList)
-    val totalOccurrences = totalCount(wordLength)
-
-    print(s"Total Occurrences : $totalOccurrences")
+  def countLetterOccurrences(input: List[String]): Int = {
+    val Lengths = input.map(_.length)
+    val totalOccurrences = Lengths.reduce((total, temp) => total + temp)
+    totalOccurrences
   }
 
-  def numberOfLetters(words: List[String]): List[Int] = {
-    words.map(_.length)
-  }
-
-  def totalCount(lengths: List[Int]): Int = {
-    lengths.reduce((total, length) => total+length)
+  def main(args: Array[String]): Unit = {
+    val input = List("apple", "banana", "cherry", "date")
+    val totalCount = countLetterOccurrences(input)
+    println(s"Total count of letter occurrences: $totalCount")
   }
 
 }
